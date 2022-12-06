@@ -7,11 +7,11 @@ const Signup = () => {
 	};
 	return (
 		<div className='min-h-screen h-screen'>
-			<div className='container mx-auto h-full flex items-center md:px-5'>
-				<div className='w-1/2 sm:pr-20'>
+			<div className='container mx-auto h-full  flex items-center md:px-5'>
+				<div className='hidden sm:block w-1/2 sm:pr-20'>
 					<span>🥰 Welcome to </span>
 					<h1 className='text-7xl font-extrabold  mb-2 text-blue-400'>
-						Crypto-chat
+						Crypt🤓-chat
 					</h1>
 					<p className='text-lg font-medium'>
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
@@ -19,12 +19,12 @@ const Signup = () => {
 						animi.ui eligendi corporis in te
 					</p>
 					<NavLink to={'/login'}>
-						<button className='border-red-400 border-2 font-bold text-red-400 p-4 rounded-sm mt-4 hover:bg-red-400 hover:text-slate-900 w-52 duration-700'>
+						<button className='border-red-400 border-2 font-bold text-red-400 p-2 sm:p-4 rounded-sm mt-4 hover:bg-red-400 hover:text-slate-900 w-52 duration-700'>
 							login
 						</button>
 					</NavLink>
 				</div>
-				<div className='w-1/2'>
+				<div className='w-full sm:w-1/2 p-2  sm:p-0'>
 					<form
 						className='flex flex-col max-w-xl w-full'
 						onSubmit={handleSubmit}
@@ -32,47 +32,47 @@ const Signup = () => {
 						<h3 className='text-4xl font-bold my-4 text-red-400'>
 							Create an account
 						</h3>
-						<div className='flex w-full gap-2'>
-							<div className='w-1/2'>
+						<div className='flex w-full gap-2 flex-col sm:flex-row'>
+							<div className='w-full sm:w-1/2'>
 								<label htmlFor='firstname'>Firstname</label>
 								<input
 									type='text'
 									name='firstname'
 									placeholder='cedric vb'
-									className='p-4
-                      outline-none rounded-lg mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
+									className='p-2 sm:p-4
+                      outline-none rounded-lg mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
 								/>
 							</div>
-							<div className='w-1/2'>
+							<div className='w-full sm:w-1/2'>
 								<label htmlFor='lastname'>lastname</label>
 								<input
 									type='text'
 									name='lastname'
 									placeholder='cedric vb'
-									className='p-4
-                      outline-none rounded-lg mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
+									className='p-2 sm:p-4
+                      outline-none rounded-lg mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
 								/>
 							</div>
 						</div>
-						<div className='flex w-full gap-2'>
-							<div className='w-1/2'>
+						<div className='flex w-full flex-col sm:flex-row gap-2'>
+							<div className='w-full sm:w-1/2'>
 								<label htmlFor='Email'>Email</label>
 								<input
 									type='email'
 									name='email'
 									placeholder='cedric vb'
-									className='p-4
-                      outline-none rounded-lg mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
+									className='p-2 sm:p-4
+                      outline-none rounded-lg mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
 								/>
 							</div>
-							<div className='w-1/2'>
+							<div className='w-full sm:w-1/2'>
 								<label htmlFor='username'>username</label>
 								<input
 									type='text'
 									name='username'
 									placeholder='cedric vb'
-									className='p-4
-                      outline-none rounded-lg mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
+									className='p-2 sm:p-4
+                      outline-none rounded-lg mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
 								/>
 							</div>
 						</div>
@@ -82,20 +82,29 @@ const Signup = () => {
 							type='password'
 							name='password'
 							placeholder='password'
-							className='p-4
-                      outline-none rounded-lg mb-4 text-lg bg-gray-400 text-gray-800 font-semibold'
+							className='p-2 sm:p-4
+                      outline-none rounded-lg mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold'
 						/>
 						<label htmlFor='password2'>confirm password</label>
 						<input
 							type='password'
 							name='password2'
 							placeholder='password2'
-							className='p-4
-                      outline-none rounded-lg mb-4 text-lg bg-gray-400 text-gray-800 font-semibold'
+							className='p-2 sm:p-4
+                      outline-none rounded-lg mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold'
 						/>
-						<button className='bg-blue-400 hover:shadow-xl p-4 rounded-sm mt-4 text-gray-100 text-xl font-semibold'>
+						<button className='bg-blue-400 hover:shadow-xl p-2 sm:p-4 rounded-sm mt-4 text-gray-100 text-xl font-semibold'>
 							register
 						</button>
+						<p className='text-center my-4 sm:hidden'>or</p>
+						<NavLink to={'/login'} className='sm:hidden'>
+							<button
+								className='border-red-400 border-2 font-bold text-red-400 p-2 sm:p-4 rounded-sm mt-4 hover:bg-red-400 hover:text-slate-900 w-full duration-700'
+								type='reset'
+							>
+								login
+							</button>
+						</NavLink>
 					</form>
 				</div>
 			</div>

@@ -9,7 +9,7 @@ function App() {
 	return (
 		<div
 			className='bg-gradient-to-br
-     from-slate-900 via-slate-900 to-red-600  text-gray-400'
+     from-slate-900 via-slate-900 to-red-600  text-gray-400 min-h-screen'
 		>
 			<Routes>
 				<Route path='/login' element={<Login />} />

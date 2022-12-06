@@ -1,17 +1,36 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../app/store';
 import ContactItem from './ContactItem';
 
 const Asidebar = () => {
+	const { user } = useSelector((state: RootState) => state.auth);
+	console.log(user);
 	return (
 		<div className='asidebar bg-white max-h-full h-full w-full relative shadow-2xl'>
 			<h2 className='sm:hidden bg-slate-200 p-4 pb-2 font-extrabold'>Crypto</h2>
 			<div className='bg-slate-200 flex p-4 gap-2'>
 				<div className='rounded-full bg-gray-400 w-12 h-12 flex items-center justify-center'>
-					.
+					{user ? (
+						<div className='object-cover rounded-full'>
+							<img src={user.imageUrl} className='w-full rounded-full' />
+						</div>
+					) : (
+						<>.</>
+					)}
 				</div>
 				<div>
-					<h3 className='text-red-500 font-extrabold'>Cedric karungu</h3>
-					<span className='text-xs'>@cedric</span>
+					<h3 className='text-red-500 font-extrabold'>
+						{user ? (
+							<>
+								<span>{user?.name}</span>
+								<span> {user?.lastname}</span>
+							</>
+						) : (
+							<>incognito</>
+						)}
+					</h3>
+					<span className='text-xs'>@{user ? user?.username : 'cedric'}</span>
 				</div>
 			</div>
 			<h3 className='text-blue-400 px-4 py-1 bg-slate-300'>Contacts</h3>

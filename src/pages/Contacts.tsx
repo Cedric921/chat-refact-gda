@@ -8,7 +8,7 @@ const Contacts = () => {
 			className='max-h-screen h-screen top-0 bottom-0 left-0 right-0  bg-gradient-to-br
      from-slate-300 via-slate-300 to-red-300  text-gray-400 sm:p-10 flex gap-4'
 		>
-			<div className='hidden sm:flex w-1/5'>
+			<div className=' w-full sm:w-1/5'>
 				<Asidebar />
 			</div>
 			<div
