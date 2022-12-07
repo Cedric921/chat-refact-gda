@@ -50,7 +50,12 @@ export const register = createAsyncThunk(
 const authSlice = createSlice({
 	name: 'auth',
 	initialState,
-	reducers: {},
+	reducers: {
+		logout: (state) => {
+			state.user = null;
+			authService.logout();
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(login.pending, (state) => {
@@ -97,3 +102,4 @@ const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
+export const { logout } = authSlice.actions;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Chat from './pages/Chat';
 import Contacts from './pages/Contacts';
@@ -15,11 +15,11 @@ function App() {
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Signup />} />
 				<Route path='/contact' element={<Contacts />} />
-				<Route path='/chat' element={<Chat />} />
+				<Route path='/chat/:contactId' element={<Chat />} />
 				<Route path='/' element={<Contacts />} />
 			</Routes>
 		</div>
 	);
 }
 
-export default App;
+export default React.memo(App);
