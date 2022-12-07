@@ -39,3 +39,8 @@ export interface iMessageState {
 	isSuccess: boolean;
 	errorMessage: string;
 }
+
+export interface iAddMessage {
+	content: string;
+	receiverId: string;
+}

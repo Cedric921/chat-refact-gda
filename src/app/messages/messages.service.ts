@@ -17,17 +17,6 @@ const getMessages = async (receiverId: string, token: string) => {
 	return res.data;
 };
 
-const getUserMessages = async (token: string) => {
-	token = token || JSON.parse(localStorage.getItem('chat-gda-user')!).token;
-	const config = {
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
-	};
-	const res = await axios.get(`${API_URL}/api/v1/messages/users`, config);
-	return res.data;
-};
-
 const addMessage = async (
 	content: string,
 	receiverId: string,
@@ -48,5 +37,5 @@ const addMessage = async (
 	return res.data;
 };
 
-const messagesSerives = { getMessages, addMessage, getUserMessages };
+const messagesSerives = { getMessages, addMessage };
 export default messagesSerives;

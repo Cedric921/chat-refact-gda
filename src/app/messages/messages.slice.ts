@@ -1,6 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import messagesSerives from './messages.service';
-import { iThunkAPIUser, iMessageState } from '../../types/messages';
+import {
+	iThunkAPIUser,
+	iMessageState,
+	iAddMessage,
+} from '../../types/messages';
 
 const initialState: iMessageState = {
 	messages: [],
@@ -32,36 +36,16 @@ export const getMessages = createAsyncThunk(
 	}
 );
 
-// get messages from user connected
-export const getUsersMessages = createAsyncThunk(
-	'message/getUserMessages',
-	async (_, thunkAPI) => {
-		const { auth } = thunkAPI.getState() as iThunkAPIUser;
-		const { token } = auth.user;
-		try {
-			return await messagesSerives.getUserMessages(token);
-		} catch (error: any) {
-			const message =
-				(error.response &&
-					error.response.data &&
-					error.response.data.message) ||
-				error.message ||
-				error.toString();
-			return thunkAPI.rejectWithValue(message);
-		}
-	}
-);
-
 // create new message
 export const addMessage = createAsyncThunk(
 	'message/addMessage',
-	async (usersData: any, thunkAPI) => {
+	async (messageData: iAddMessage, thunkAPI) => {
 		const { auth } = thunkAPI.getState() as iThunkAPIUser;
 		const { token } = auth.user;
-		const { content, receiverID } = usersData;
-		console.log(usersData);
+		const { content, receiverId } = messageData;
+		console.log(messageData);
 		try {
-			return await messagesSerives.addMessage(content, receiverID, token);
+			return await messagesSerives.addMessage(content, receiverId, token);
 		} catch (error: any) {
 			const message =
 				(error.response &&
