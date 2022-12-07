@@ -7,8 +7,10 @@ import ContactItem from './ContactItem';
 import ContactItemSkeleton from './skeleton/contactItem';
 import { FiLogOut } from 'react-icons/fi';
 import { logout } from '../app/auth/auth-slice';
+import { useNavigate } from 'react-router-dom';
 
 const Asidebar = () => {
+	const navigate = useNavigate();
 	const { user } = useSelector((state: RootState) => state.auth);
 	const { contacts, isLoading } = useSelector(
 		(state: RootState) => state.contacts
@@ -16,6 +18,7 @@ const Asidebar = () => {
 	const dispatch = useDispatch<AppDispatch>();
 	const handleLogout = () => {
 		dispatch(logout());
+		navigate('/login');
 	};
 
 	useEffect(() => {
