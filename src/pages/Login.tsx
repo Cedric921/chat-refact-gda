@@ -43,7 +43,7 @@ const Login = () => {
 	return (
 		<div className='min-h-screen h-screen'>
 			<div className='container mx-auto h-full flex items-center md:px-5'>
-				<div className='hidden sm:block w-1/2 sm:pr-20'>
+				<div className='hidden md:block w-1/2 sm:pr-20'>
 					<span>🥰 Welcome to </span>
 					<h1 className='text-7xl font-extrabold  mb-2 text-blue-400'>
 						Crypt🤓-chat
@@ -59,7 +59,7 @@ const Login = () => {
 						</button>
 					</NavLink>
 				</div>
-				<div className='w-full mx-auto sm:w-1/2 p-4 sm:p-0'>
+				<div className='w-full mx-auto md:w-1/2 p-4 sm:p-0'>
 					<form
 						onSubmit={handleSubmit}
 						className='flex flex-col max-w-sm mx-auto'
@@ -79,7 +79,7 @@ const Login = () => {
 						/>
 						<label htmlFor='password'>password</label>
 						<input
-							type='text'
+							type='password'
 							name='password'
 							placeholder='password'
 							onChange={handleChange}
@@ -88,7 +88,7 @@ const Login = () => {
                       outline-none rounded-lg mb-4 text-lg bg-gray-400 text-gray-800 font-semibold'
 						/>
 						<button
-							className='bg-blue-400 hover:shadow-xl p-4 rounded-sm mt-4 text-gray-100 text-xl font-semibold'
+							className='bg-blue-400 hover:bg-blue-600 duration-1000 hover:shadow-xl p-4 rounded-sm mt-4 text-gray-100 text-xl font-semibold'
 							type='submit'
 						>
 							{isLoading ? (
