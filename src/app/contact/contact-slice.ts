@@ -42,7 +42,7 @@ const contactsSlice = createSlice({
 				state.error = '';
 			})
 			.addCase(getContact.fulfilled, (state, action) => {
-				state.contact = action.payload;
+				state.contact = action.payload.user;
 				state.isLoading = false;
 				state.isSuccess = true;
 				state.isError = false;

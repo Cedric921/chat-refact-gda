@@ -17,4 +17,4 @@ const MessageSent = ({
 	);
 };
 
-export default MessageSent;
+export default React.memo(MessageSent);

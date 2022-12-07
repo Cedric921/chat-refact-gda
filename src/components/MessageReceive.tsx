@@ -17,4 +17,4 @@ const MessageReceive = ({
 	);
 };
 
-export default MessageReceive;
+export default React.memo(MessageReceive);

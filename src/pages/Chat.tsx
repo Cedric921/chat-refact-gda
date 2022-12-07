@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Asidebar from '../components/Asidebar';
 import ContactItem from '../components/ContactItem';
 import { AiOutlineSend } from 'react-icons/ai';
 import MessageSent from '../components/MessageSent';
 import MessageReceive from '../components/MessageReceive';
 import ChatHeader from '../components/ChatHeader';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContact } from '../app/contact/contact-slice';
+import { AppDispatch, RootState } from '../app/store';
 
 const Chat = () => {
+	const { contactId } = useParams();
+	const dispatch = useDispatch<AppDispatch>();
+	const { contact } = useSelector((state: RootState) => state.contact);
+	useEffect(() => {
+		dispatch(getContact(contactId!));
+	}, []);
+
+	console.log(contact);
 	return (
 		<div
 			className='max-h-screen h-screen top-0 bottom-0 left-0 right-0  bg-gradient-to-br
@@ -18,7 +30,7 @@ const Chat = () => {
 			<div
 				className={`w-full sm:4/6 md:w-4/5 h-full shadow-2xl  bg-[url('assets/telegrambg.png')]  bg-fixed flex flex-col justify-between`}
 			>
-				<ChatHeader />
+				<ChatHeader contact={contact} />
 				<div className='text-blue-400 h-full max-w-full overflow-y-auto p-4 flex flex-col bg-slate-500 bg-opacity-70'>
 					{/* chat */}
 
@@ -53,4 +65,4 @@ const Chat = () => {
 	);
 };
 
-export default Chat;
+export default React.memo(Chat);

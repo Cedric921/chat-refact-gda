@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../app/contacts/contacts-slice';
 import { AppDispatch, RootState } from '../app/store';
 import ContactItem from './ContactItem';
+import ContactItemSkeleton from './skeleton/contactItem';
 
 const Asidebar = () => {
 	const { user } = useSelector((state: RootState) => state.auth);
-	const { contacts } = useSelector((state: RootState) => state.contacts);
+	const { contacts, isLoading } = useSelector(
+		(state: RootState) => state.contacts
+	);
 	const dispatch = useDispatch<AppDispatch>();
-	console.log(contacts);
 
 	useEffect(() => {
 		dispatch(getContacts());
@@ -49,11 +51,25 @@ const Asidebar = () => {
 				{contacts ? (
 					<>
 						{contacts &&
-							contacts.map((contact) => <ContactItem contact={contact} />)}
+							contacts.map((contact) => (
+								<ContactItem contact={contact} key={contact._id} />
+							))}
 					</>
 				) : (
 					<>
-						<div>no contact</div>
+						{isLoading ? (
+							<>
+								<ContactItemSkeleton />
+								<ContactItemSkeleton />
+								<ContactItemSkeleton />
+							</>
+						) : (
+							<>
+								<div className='p-4'>
+									<h3>No contacts found</h3>
+								</div>
+							</>
+						)}
 					</>
 				)}
 			</div>
