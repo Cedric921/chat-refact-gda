@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Asidebar from '../components/Asidebar';
-import ContactItem from '../components/ContactItem';
-import { AiOutlineSend } from 'react-icons/ai';
+import { io } from 'socket.io-client';
 import MessageSent from '../components/MessageSent';
 import MessageReceive from '../components/MessageReceive';
 import ChatHeader from '../components/ChatHeader';
@@ -20,23 +19,40 @@ const Chat = () => {
 	const { contactId } = useParams();
 	const dispatch = useDispatch<AppDispatch>();
 	const { contact } = useSelector((state: RootState) => state.contact);
+	const { user } = useSelector((state: RootState) => state.auth);
 	const { messages, isLoading } = useSelector(
 		(state: RootState) => state.messages
 	);
 	useEffect(() => {
-		dispatch(getMessages(contactId!));
-	}, [contactId]);
+		if (contactId) dispatch(getMessages(contactId!));
+		if (!user) navigate('/login');
+		console.log(contactId);
+	}, []);
 
 	useEffect(() => {
 		messagesDiv.current?.scrollTo({
 			behavior: 'auto',
 			top: messagesDiv.current.scrollHeight,
 		});
-	}, [isLoading]);
+		console.log('isLoading, dispatch, contact');
+	}, [isLoading, dispatch, contact]);
 
 	useEffect(() => {
-		if (!contact) navigate('/');
+		if (!contact && contactId) dispatch(getContact(contactId!));
+		console.log({ contact, contactId });
 	}, [contact]);
+
+	useEffect(() => {
+		const socket = io(import.meta.env.VITE_API_URI!);
+		if (contact) {
+			socket.on('messages', (data) => {
+				if (data.action == 'create') {
+					dispatch(getMessages(contact?._id!));
+				}
+			});
+		}
+		console.log(' dispatch, contact');
+	}, [dispatch, contact]);
 
 	return (
 		<div

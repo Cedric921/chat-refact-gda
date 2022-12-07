@@ -2,15 +2,17 @@ import React from 'react';
 import { BiArrowBack, BiUser } from 'react-icons/bi';
 import { FiLogOut } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { logout } from '../app/auth/auth-slice';
 import { AppDispatch } from '../app/store';
 import { iContact } from '../types/contact';
 
 const ChatHeader = ({ contact }: { contact: iContact | null }) => {
 	const dispatch = useDispatch<AppDispatch>();
+	const navigate = useNavigate();
 	const handleLogout = () => {
 		dispatch(logout());
+		navigate('/login');
 	};
 	return (
 		<div className='bg-slate-200 p-2 flex items-center justify-between gap-2'>
