@@ -6,8 +6,8 @@ const ChatHeader = () => {
 	return (
 		<div className='bg-slate-200 p-2 flex items-center gap-2'>
 			<NavLink to={'/contact'}>
-				<div className=' hover:bg-blue-400 duration-1000 p-4 rounded-full'>
-					<BiArrowBack className='text-2xl text-red-400' />
+				<div className=' h-12 w-12 duration-1000 flex justify-center items-center rounded-full'>
+					<BiArrowBack className='text-2xl text-red-400 hover:' />
 				</div>
 			</NavLink>
 			<div className=' bg-slate-400 duration-1000 h-12 w-12 flex justify-center items-center rounded-full'>
