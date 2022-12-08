@@ -18,15 +18,17 @@ const Chat = () => {
 	const messagesDiv = useRef<HTMLDivElement>(null);
 	const { contactId } = useParams();
 	const dispatch = useDispatch<AppDispatch>();
-	const { contact } = useSelector((state: RootState) => state.contact);
+	const { contact, isLoading: loadingContact } = useSelector(
+		(state: RootState) => state.contact
+	);
 	const { user } = useSelector((state: RootState) => state.auth);
 	const { messages, isLoading } = useSelector(
 		(state: RootState) => state.messages
 	);
 	useEffect(() => {
 		if (contactId) dispatch(getMessages(contactId!));
+
 		if (!user) navigate('/login');
-		console.log(contactId);
 	}, []);
 
 	useEffect(() => {
@@ -34,12 +36,11 @@ const Chat = () => {
 			behavior: 'auto',
 			top: messagesDiv.current.scrollHeight,
 		});
-		console.log('isLoading, dispatch, contact');
 	}, [isLoading, dispatch, contact]);
 
 	useEffect(() => {
 		if (!contact && contactId) dispatch(getContact(contactId!));
-		console.log({ contact, contactId });
+		if (contactId) dispatch(getMessages(contactId!));
 	}, [contact]);
 
 	useEffect(() => {
@@ -51,7 +52,6 @@ const Chat = () => {
 				}
 			});
 		}
-		console.log(' dispatch, contact');
 	}, [dispatch, contact]);
 
 	return (
@@ -67,7 +67,7 @@ const Chat = () => {
 			>
 				<ChatHeader contact={contact} />
 				<div
-					className='text-blue-400 h-full max-w-full overflow-y-auto p-4 flex flex-col bg-slate-500 bg-opacity-70'
+					className='text-blue-400 h-full max-w-full overflow-y-auto p-4 flex flex-col bg-slate-600 bg-opacity-80'
 					ref={messagesDiv}
 				>
 					{/* chat */}
@@ -95,7 +95,15 @@ const Chat = () => {
 							) : (
 								<div className='w-full h-full flex flex-col justify-center items-center'>
 									<h3 className='text-blue-600 text-3xl font-extrabold text-center'>
-										Commencer votre conversation <br /> maintenant
+										{loadingContact ? (
+											<>
+												<BiLoaderCircle className='animate-spin text-8xl' />
+											</>
+										) : (
+											<span>
+												Commencer votre conversation <br /> maintenant
+											</span>
+										)}
 									</h3>
 									<span></span>
 								</div>

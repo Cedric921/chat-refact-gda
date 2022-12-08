@@ -17,7 +17,7 @@ const Login = () => {
 		username: '',
 		password: '',
 	});
-	const handleChange = (e: any) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setUserInput({ ...userInput, [e.target.name]: e.target.value });
 	};
 
@@ -33,12 +33,10 @@ const Login = () => {
 		}
 	}, [isError, isSuccess]);
 
-	const handleSubmit = (e: any) => {
+	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		if (userInput.password.trim() == '' || userInput.username.trim() == '') {
-			toast.warning('all fields required', {
-				// theme: 'dark',
-			});
+			toast.warning('all fields required');
 		} else {
 			dispatch(login(userInput));
 			setUserInput({ ...userInput, username: '', password: '' });
@@ -63,12 +61,22 @@ const Login = () => {
 						</button>
 					</NavLink>
 				</div>
-				<div className='w-full mx-auto md:w-1/2 p-4 sm:p-0'>
+				<div className='w-full mx-auto md:w-1/2 p-8 sm:p-0'>
 					<form
 						onSubmit={handleSubmit}
 						className='flex flex-col max-w-sm mx-auto'
 					>
-						<h3 className='text-4xl font-bold my-4 text-red-400'>
+						<div className='text-center mb-8 sm:hidden'>
+							<span>🥰 Welcome to </span>
+							<h1 className='text-4xl font-extrabold  mb-4 text-blue-400'>
+								Crypt🤓-chat
+							</h1>
+							<p className='text-xs font-medium'>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+								Eveniet tempora ducimus obcaecati animi.
+							</p>
+						</div>
+						<h3 className='text-2xl sm:text-4xl text-center sm:text-start font-bold my-4 text-red-400'>
 							Welcome again
 						</h3>
 						<label htmlFor='username'>username</label>
@@ -78,8 +86,8 @@ const Login = () => {
 							placeholder='cedric vb'
 							onChange={handleChange}
 							value={userInput.username}
-							className='p-4
-                      outline-none rounded-lg mb-4 text-lg bg-gray-400 text-gray-800 font-semibold'
+							className='p-2 sm:p-4
+                      outline-none rounded-md sm:rounded-lg mb-4 text-lg bg-gray-400 text-gray-800 font-semibold'
 						/>
 						<label htmlFor='password'>password</label>
 						<input
@@ -88,11 +96,11 @@ const Login = () => {
 							placeholder='password'
 							onChange={handleChange}
 							value={userInput.password}
-							className='p-4
-                      outline-none rounded-lg mb-4 text-lg bg-gray-400 text-gray-800 font-semibold'
+							className='p-2 sm:p-4
+                      outline-none rounded-md sm:rounded-lg mb-4 text-lg bg-gray-400 text-gray-800 font-semibold'
 						/>
 						<button
-							className='bg-blue-400 hover:bg-blue-600 duration-1000 hover:shadow-xl p-4 rounded-sm mt-4 text-gray-100 text-xl font-semibold'
+							className='bg-blue-400 hover:bg-blue-600 duration-1000 hover:shadow-xl p-2 sm:p-4 rounded-sm mt-4 text-gray-100 text-md font-semibold'
 							type='submit'
 						>
 							{isLoading ? (
@@ -107,7 +115,7 @@ const Login = () => {
 						<p className='text-center my-4 sm:hidden'>or</p>
 						<NavLink to={'/register'} className='sm:hidden'>
 							<button
-								className='border-red-400 border-2 font-bold text-red-400 p-4 rounded-sm mt-4 hover:bg-red-400 hover:text-slate-900 w-full duration-700'
+								className='border-red-400 border-2 font-bold text-red-400 p-2 sm:p-4 rounded-sm hover:bg-red-400 hover:text-slate-900 text-base w-full duration-700'
 								type='reset'
 							>
 								register

@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Chat from './pages/Chat';
 import Contacts from './pages/Contacts';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 
 function App() {
@@ -15,8 +16,10 @@ function App() {
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Signup />} />
 				<Route path='/contact' element={<Contacts />} />
+				<Route path='/profil' element={<Profile />} />
 				<Route path='/chat/:contactId' element={<Chat />} />
 				<Route path='/' element={<Contacts />} />
+				<Route path='/**' element={<Contacts />} />
 			</Routes>
 		</div>
 	);

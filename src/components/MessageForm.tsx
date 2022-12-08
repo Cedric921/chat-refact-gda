@@ -22,7 +22,7 @@ const MessageForm = () => {
 	};
 
 	return (
-		<div className='p-2  bg-slate-500 bg-opacity-70'>
+		<div className='p-2  bg-slate-600 bg-opacity-80'>
 			<form
 				onSubmit={handleSubmit}
 				className='p-0 m-0 flex w-full sm:w-3/4 rounded-full mx-auto bg-blue-300'
@@ -34,10 +34,12 @@ const MessageForm = () => {
 						setMessageInput(e.target.value)
 					}
 					value={messageInput}
-					className='m-0 bg-gradient-to-r from-red-300 to-blue-300 w-full rounded-full px-4 py-1 outline-none text-white h-10 resize-none'
+					className='m-0 bg-gradient-to-r from-gray-600 to-blue-300 w-full rounded-full px-4 py-1 outline-none text-white h-10 resize-none'
 				></textarea>
 				<button
-					className='bg-red-400 hover:bg-blue-600 duration-1000 text-white font-extrabold rounded-full w-16 flex justify-center items-center'
+					className={`${
+						messageInput.length < 1 ? 'bg-red-400' : 'bg-blue-600'
+					}  duration-1000 text-white font-extrabold rounded-full w-16 flex justify-center items-center`}
 					type='submit'
 				>
 					{isLoading ? (
