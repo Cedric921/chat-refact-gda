@@ -7,7 +7,7 @@ import ContactItem from './ContactItem';
 import ContactItemSkeleton from './skeleton/contactItem';
 import { FiLogOut } from 'react-icons/fi';
 import { logout } from '../app/auth/auth-slice';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Asidebar = () => {
 	const navigate = useNavigate();
@@ -33,26 +33,32 @@ const Asidebar = () => {
 			<div className='bg-slate-200 flex justify-between items-center p-4 gap-2'>
 				<div className='flex items-center gap-2'>
 					<div className='rounded-full bg-gray-400 w-12 h-12 flex items-center justify-center'>
-						{user && user.imageUrl ? (
-							<div className='object-cover rounded-full'>
-								<img src={user.imageUrl} className='w-full rounded-full' />
-							</div>
-						) : (
-							<BiUser className='text-white text-xl font-bold' />
-						)}
+						<NavLink to={'/profil'}>
+							{user && user.imageUrl ? (
+								<div className='object-cover rounded-full'>
+									<img src={user.imageUrl} className='w-full rounded-full' />
+								</div>
+							) : (
+								<BiUser className='text-white text-xl font-bold' />
+							)}
+						</NavLink>
 					</div>
 					<div>
-						<h3 className='text-red-500 font-extrabold'>
-							{user ? (
-								<>
-									<span>{user?.name}</span>
-									<span> {user?.lastname}</span>
-								</>
-							) : (
-								<>incognito</>
-							)}
-						</h3>
-						<span className='text-xs'>@{user ? user?.username : 'cedric'}</span>
+						<NavLink to={'/profil'}>
+							<h3 className='text-red-500 font-extrabold'>
+								{user ? (
+									<>
+										<span>{user?.name}</span>
+										<span> {user?.lastname}</span>
+									</>
+								) : (
+									<>incognito</>
+								)}
+							</h3>
+							<span className='text-xs'>
+								@{user ? user?.username : 'cedric'}
+							</span>
+						</NavLink>
 					</div>
 				</div>
 				<button

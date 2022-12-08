@@ -62,7 +62,7 @@ const messageSlice = createSlice({
 	name: 'message',
 	initialState,
 	reducers: {
-		reset: () => initialState,
+		init: (state) => initialState,
 	},
 	extraReducers: (builder) => {
 		builder
@@ -71,7 +71,6 @@ const messageSlice = createSlice({
 				state.isLoading = true;
 				state.isSuccess = false;
 				state.messages = [];
-
 				state.isError = false;
 			})
 			.addCase(getMessages.fulfilled, (state, action) => {
@@ -84,7 +83,6 @@ const messageSlice = createSlice({
 				state.isError = true;
 				state.errorMessage = action.payload as string;
 			})
-
 			.addCase(addMessage.pending, (state) => {
 				state.isLoading = true;
 				state.isSuccess = false;
@@ -103,5 +101,5 @@ const messageSlice = createSlice({
 	},
 });
 
-export const { reset } = messageSlice.actions;
+export const { init } = messageSlice.actions;
 export default messageSlice.reducer;
