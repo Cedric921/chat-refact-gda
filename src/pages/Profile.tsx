@@ -13,6 +13,7 @@ import { iMessage } from '../types/messages';
 import { BiLoaderCircle, BiUser } from 'react-icons/bi';
 import { BsImageFill } from 'react-icons/bs';
 import MessageForm from '../components/MessageForm';
+import { iUser } from '../types/globalState';
 
 const Profile = () => {
 	const navigate = useNavigate();
@@ -20,6 +21,11 @@ const Profile = () => {
 	const dispatch = useDispatch<AppDispatch>();
 	const { contact } = useSelector((state: RootState) => state.contact);
 	const { user } = useSelector((state: RootState) => state.auth);
+	const [userInput, setUserInput] = useState<any>(user);
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setUserInput({ ...userInput, [e.target.name]: e.target.value });
+	};
 
 	return (
 		<div
@@ -72,16 +78,20 @@ const Profile = () => {
 									<label htmlFor=''>name</label>
 									<input
 										type='text'
+										name='name'
 										className='w-full p-2 text-gray-600 outline-none'
-										value={user ? user.name : undefined}
+										value={userInput ? userInput.name : undefined}
+										onChange={handleChange}
 									/>
 								</div>
 								<div className='w-full sm:w-1/2 p-1'>
 									<label htmlFor=''>lastname</label>
 									<input
 										type='text'
+										name='lastname'
 										className='w-full p-2 text-gray-600 outline-none'
-										value={user ? user.lastname : undefined}
+										value={userInput ? userInput.lastname : undefined}
+										onChange={handleChange}
 									/>
 								</div>
 							</div>
@@ -90,16 +100,20 @@ const Profile = () => {
 									<label htmlFor=''>username</label>
 									<input
 										type='text'
+										name='username'
 										className='w-full p-2 text-gray-600 outline-none'
-										value={user ? user.username : undefined}
+										value={userInput ? userInput.username : undefined}
+										onChange={handleChange}
 									/>
 								</div>
 								<div className='w-full sm:w-1/2 p-1'>
 									<label htmlFor=''>email</label>
 									<input
 										type='email'
+										name='email'
 										className='w-full p-2 text-gray-600 outline-none'
-										value={user ? user.email : undefined}
+										value={userInput ? userInput.email : undefined}
+										onChange={handleChange}
 									/>
 								</div>
 							</div>
@@ -108,16 +122,20 @@ const Profile = () => {
 									<label htmlFor=''>Password</label>
 									<input
 										type='password'
+										name='password'
 										className='w-full p-2 text-gray-600 outline-none'
 										placeholder={'123456'}
+										onChange={handleChange}
 									/>
 								</div>
 								<div className='w-full sm:w-1/2 p-1'>
 									<label htmlFor=''>Password (validate)</label>
 									<input
 										type='password'
+										name='password2'
 										className='w-full p-2 text-gray-600 outline-none'
 										placeholder={'123456'}
+										onChange={handleChange}
 									/>
 								</div>
 							</div>
