@@ -57,7 +57,7 @@ const Chat = () => {
 	return (
 		<div
 			className='max-h-screen h-screen top-0 bottom-0 left-0 right-0  bg-gradient-to-br
-     from-slate-300 via-slate-300 to-red-300  text-gray-400 p-0 sm:p-4 md:p-10 flex gap-4'
+     from-slate-300 via-slate-300 to-red-300  text-gray-400 p-0 sm:p-4 md:p-8 flex gap-4'
 		>
 			<div className='hidden sm:2/4 md:flex w-1/5'>
 				<Asidebar />
@@ -67,7 +67,7 @@ const Chat = () => {
 			>
 				<ChatHeader contact={contact} />
 				<div
-					className='text-blue-500 h-full max-w-full overflow-y-auto p-4 flex flex-col bg-slate-600 bg-opacity-80'
+					className='text-blue-500 h-full max-w-full overflow-y-auto p-4 flex flex-col bg-slate-600 bg-opacity-70'
 					ref={messagesDiv}
 				>
 					{/* chat */}

@@ -22,7 +22,7 @@ const MessageForm = () => {
 	};
 
 	return (
-		<div className='p-2  bg-slate-600 bg-opacity-80'>
+		<div className='p-2  bg-slate-600 bg-opacity-70'>
 			<form
 				onSubmit={handleSubmit}
 				className='p-0 m-0 flex w-full sm:w-3/4 rounded-full mx-auto bg-blue-300'
@@ -38,7 +38,7 @@ const MessageForm = () => {
 				></textarea>
 				<button
 					className={`${
-						messageInput.length < 1 ? 'bg-red-400' : 'bg-blue-600'
+						messageInput.length < 1 ? 'bg-slate-600' : 'bg-blue-600'
 					}  duration-1000 text-white font-extrabold rounded-full w-16 flex justify-center items-center`}
 					type='submit'
 				>
