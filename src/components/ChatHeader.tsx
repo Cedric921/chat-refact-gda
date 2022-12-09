@@ -1,23 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BiArrowBack, BiUser } from 'react-icons/bi';
 import { FiLogOut } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { logout } from '../app/auth/auth-slice';
 import { AppDispatch, RootState } from '../app/store';
 import { iContact } from '../types/contact';
+import { reset } from '../app/contact/contact-slice';
 
 const ChatHeader = ({ contact }: { contact: iContact | null }) => {
 	const dispatch = useDispatch<AppDispatch>();
+	const { contactId } = useParams();
 	const { user } = useSelector((state: RootState) => state.auth);
 	const navigate = useNavigate();
 	const handleLogout = () => {
 		dispatch(logout());
 		navigate('/login');
 	};
+	useEffect(() => {
+		if (!contactId) dispatch(reset());
+	}, []);
 	return (
 		<div className='bg-slate-200 p-2 flex items-center justify-between gap-2'>
-			<div className='flex gap-2 items-center'>
+			<div className='flex gap-2 items-center w-full'>
 				<NavLink to={'/contact'}>
 					<div className=' h-12 w-12 duration-1000 flex justify-center items-center rounded-full'>
 						<BiArrowBack className='text-2xl text-red-400 hover:' />
@@ -45,11 +50,14 @@ const ChatHeader = ({ contact }: { contact: iContact | null }) => {
 						</div>
 					</>
 				) : (
-					<div>
+					<div className='mx-auto w-max'>
 						{user ? (
-							<h3>
-								<span>{user.name}</span> <span>{user.lastname}</span>
-							</h3>
+							<>
+								<h3 className='text-center font-bold'>Profile</h3>
+								<span className='text-xs text-blue-500'>
+									<span>{user.name}</span> <span>{user.lastname}</span>
+								</span>
+							</>
 						) : null}
 					</div>
 				)}

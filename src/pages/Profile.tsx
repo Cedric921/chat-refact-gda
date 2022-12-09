@@ -33,47 +33,46 @@ const Profile = () => {
 				className={`w-full sm:4/6 md:w-4/5 h-full shadow-2xl  bg-[url('assets/telegrambg.png')]  bg-fixed flex flex-col justify-between`}
 			>
 				<ChatHeader contact={contact} />
-				<div className='text-blue-400 h-full max-w-full overflow-y-auto p-1 flex flex-row bg-slate-600 bg-opacity-80'>
-					<div className='w-full bg-slate-200 bg-opacity-60 flex flex-col items-center p-10 overflow-y-auto'>
-						<div className='relative w-40 mx-auto mb-4'>
-							<div className='rounded-full w-full mx-auto '>
-								{user && user.imageUrl ? (
-									<>
-										<img
-											src={user?.imageUrl}
-											alt=''
-											className='object-cover w-full rounded-full'
-										/>
-									</>
-								) : (
-									<div className='object-cover w-full h-full rounded-full bg-slate-500'></div>
-								)}
+				<div className='text-blue-500 h-full max-w-full overflow-y-auto p-0 sm:p-1 flex flex-row bg-slate-600 bg-opacity-80'>
+					<div className='w-full bg-slate-200 bg-opacity-60 flex flex-col items-center p-4 sm:p-10 overflow-y-auto'>
+						<div className='bg-slate-300 w-full sm:w-1/2 pt-4'>
+							<div className='relative w-40 mx-auto mb-4 '>
+								<div className='rounded-full w-full mx-auto '>
+									{user && user.imageUrl ? (
+										<>
+											<img
+												src={user?.imageUrl}
+												alt=''
+												className='object-cover w-full rounded-full'
+											/>
+										</>
+									) : (
+										<div className='object-cover w-full h-full rounded-full bg-slate-500'></div>
+									)}
+								</div>
+								<div
+									className='bg-slate-100 p-2 rounded-full w-10 h-10 absolute bottom-0 right-5 flex justify-center items-center cursor-pointer hover:'
+									onClick={() => inputImage.current?.click()}
+								>
+									<BsImageFill className='text-xl' />
+								</div>
+								<input
+									type='file'
+									name=''
+									id=''
+									className='absolute hidden'
+									ref={inputImage}
+								/>
 							</div>
-							<div
-								className='bg-slate-100 p-2 rounded-full w-10 h-10 absolute bottom-0 right-5 flex justify-center items-center cursor-pointer hover:'
-								onClick={() => inputImage.current?.click()}
-							>
-								<BsImageFill className='text-xl' />
-							</div>
-							<input
-								type='file'
-								name=''
-								id=''
-								className='absolute hidden'
-								ref={inputImage}
-							/>
 						</div>
 
-						<form
-							action=''
-							className='p-2 my-0 sm:my-2 bg-slate-300 w-full sm:w-1/2'
-						>
+						<form action='' className='p-2  bg-slate-300 w-full sm:w-1/2'>
 							<div className='flex gap-0 flex-wrap  w-full mb-4'>
 								<div className='w-full sm:w-1/2 p-1 px-1'>
 									<label htmlFor=''>name</label>
 									<input
 										type='text'
-										className='w-full p-2 text-gray-600'
+										className='w-full p-2 text-gray-600 outline-none'
 										value={user ? user.name : undefined}
 									/>
 								</div>
@@ -81,7 +80,7 @@ const Profile = () => {
 									<label htmlFor=''>lastname</label>
 									<input
 										type='text'
-										className='w-full p-2 text-gray-600'
+										className='w-full p-2 text-gray-600 outline-none'
 										value={user ? user.lastname : undefined}
 									/>
 								</div>
@@ -91,7 +90,7 @@ const Profile = () => {
 									<label htmlFor=''>username</label>
 									<input
 										type='text'
-										className='w-full p-2 text-gray-600'
+										className='w-full p-2 text-gray-600 outline-none'
 										value={user ? user.username : undefined}
 									/>
 								</div>
@@ -99,7 +98,7 @@ const Profile = () => {
 									<label htmlFor=''>email</label>
 									<input
 										type='email'
-										className='w-full p-2 text-gray-600'
+										className='w-full p-2 text-gray-600 outline-none'
 										value={user ? user.email : undefined}
 									/>
 								</div>
@@ -109,7 +108,7 @@ const Profile = () => {
 									<label htmlFor=''>Password</label>
 									<input
 										type='password'
-										className='w-full p-2 text-gray-600'
+										className='w-full p-2 text-gray-600 outline-none'
 										placeholder={'123456'}
 									/>
 								</div>
@@ -117,7 +116,7 @@ const Profile = () => {
 									<label htmlFor=''>Password (validate)</label>
 									<input
 										type='password'
-										className='w-full p-2 text-gray-600'
+										className='w-full p-2 text-gray-600 outline-none'
 										placeholder={'123456'}
 									/>
 								</div>
