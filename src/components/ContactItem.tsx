@@ -17,10 +17,10 @@ const ContactItem = ({ contact }: { contact: iContact }) => {
 	};
 	return (
 		<div
-			className=' flex p-2 gap-2 m-2 hover:bg-slate-400 text-blue-500 hover:text-slate-100 duration-1000 rounded-md cursor-pointer'
+			className=' flex p-2 gap-2 m-2 hover:bg-slate-400 text-slate-600 hover:text-slate-100 duration-1000 rounded-md cursor-pointer'
 			onClick={() => handleChat(contact._id)}
 		>
-			<div className='rounded-full bg-gray-500 w-12 h-12 flex items-center justify-center'>
+			<div className='rounded-full bg-slate-600 w-12 h-12 flex items-center justify-center'>
 				{contact && contact.imageUrl ? (
 					<div className='object-cover rounded-full'>
 						<img src={contact.imageUrl} className='w-full rounded-full' />
@@ -38,7 +38,7 @@ const ContactItem = ({ contact }: { contact: iContact }) => {
 					</span>{' '}
 					<span>{contact.name.length < 10 ?? contact.lastname}</span>
 				</h3>
-				<span className='text-xs text-gray-800 hover:text-inherit'>
+				<span className='text-xs text-slate-600 hover:text-inherit'>
 					{contact.username}
 				</span>
 			</div>

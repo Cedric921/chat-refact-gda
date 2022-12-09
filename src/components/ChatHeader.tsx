@@ -25,7 +25,7 @@ const ChatHeader = ({ contact }: { contact: iContact | null }) => {
 			<div className='flex gap-2 items-center w-full'>
 				<NavLink to={'/contact'}>
 					<div className=' h-12 w-12 duration-1000 flex justify-center items-center rounded-full'>
-						<BiArrowBack className='text-2xl text-red-400 hover:' />
+						<BiArrowBack className='text-2xl text-gray-600 hover:' />
 					</div>
 				</NavLink>
 				{contact ? (
@@ -40,7 +40,7 @@ const ChatHeader = ({ contact }: { contact: iContact | null }) => {
 							)}
 						</div>
 						<div className=''>
-							<h3 className='text-blue-400 font-extrabold p-0 m-0'>
+							<h3 className='text-blue-500 font-extrabold p-0 m-0'>
 								<span>{contact && contact.name}</span>{' '}
 								<span>{contact && contact.lastname}</span>
 							</h3>

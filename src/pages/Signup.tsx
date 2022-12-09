@@ -60,7 +60,7 @@ const Signup = () => {
 						animi.ui eligendi corporis in te
 					</p>
 					<NavLink to={'/login'}>
-						<button className='border-red-400 border-2 font-bold text-red-400  p-4 rounded-sm mt-4 hover:bg-red-400 hover:text-slate-900 w-52 duration-700'>
+						<button className='border-red-400 border-2 font-bold text-red-400  p-3 rounded-sm mt-4 hover:bg-red-400 hover:text-slate-900 w-52 duration-700'>
 							login
 						</button>
 					</NavLink>
@@ -87,7 +87,7 @@ const Signup = () => {
 									name='name'
 									placeholder='cedric vb'
 									onChange={handleChage}
-									className='p-2 sm:p-4
+									className='p-2 sm:p-3
                       outline-none rounded-md  sm:rounded-lg mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
 								/>
 							</div>
@@ -98,8 +98,8 @@ const Signup = () => {
 									name='lastname'
 									placeholder='cedric vb'
 									onChange={handleChage}
-									className='p-2 sm:p-4
-                      outline-none rounded-md sm:rounded-lg mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
+									className='p-2 sm:p-3
+                      outline-none rounded-md mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
 								/>
 							</div>
 						</div>
@@ -111,8 +111,8 @@ const Signup = () => {
 									name='email'
 									placeholder='cedric vb'
 									onChange={handleChage}
-									className='p-2 sm:p-4
-                      outline-none rounded-md sm:rounded-lg mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
+									className='p-2 sm:p-3
+                      outline-none rounded-md mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
 								/>
 							</div>
 							<div className='w-full sm:w-1/2'>
@@ -122,8 +122,8 @@ const Signup = () => {
 									name='username'
 									placeholder='cedric vb'
 									onChange={handleChage}
-									className='p-2 sm:p-4
-                      outline-none rounded-md sm:rounded-lg mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
+									className='p-2 sm:p-3
+                      outline-none rounded-md mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold w-full'
 								/>
 							</div>
 						</div>
@@ -134,8 +134,8 @@ const Signup = () => {
 							name='password'
 							placeholder='password'
 							onChange={handleChage}
-							className='p-2 sm:p-4
-                      outline-none rounded-md sm:rounded-lg mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold'
+							className='p-2 sm:p-3
+                      outline-none rounded-md mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold'
 						/>
 						<label htmlFor='password2'>confirm password</label>
 						<input
@@ -143,10 +143,10 @@ const Signup = () => {
 							name='password2'
 							placeholder='password2'
 							onChange={handleChage}
-							className='p-2 sm:p-4
-                      outline-none rounded-md sm:rounded-lg mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold'
+							className='p-2 sm:p-3
+                      outline-none rounded-md mb-2 sm:mb-4 text-lg bg-gray-400 text-gray-800 font-semibold'
 						/>
-						<button className='bg-blue-400 hover:bg-blue-600 duration-1000 hover:shadow-xl p-2 sm:p-4 rounded-sm mt-8 text-gray-100 text-base sm:text-xl font-semibold'>
+						<button className='bg-blue-400 hover:bg-blue-600 duration-1000 hover:shadow-xl p-2 sm:p-3 rounded-sm mt-8 text-gray-100 text-base sm:text-xl font-semibold'>
 							{isLoading ? (
 								<span className='w-full flex justify-center'>
 									<BiLoaderCircle className='animate-spin text-2xl' />
@@ -158,7 +158,7 @@ const Signup = () => {
 						<p className='text-center my-4 sm:hidden'>OR</p>
 						<NavLink to={'/login'} className='sm:hidden'>
 							<button
-								className='border-red-400 border-2 font-bold text-red-400 p-2 sm:p-4 rounded-sm  hover:bg-red-400 hover:text-slate-900 w-full duration-700 '
+								className='border-red-400 border-2 font-bold text-red-400 p-2 sm:p-3 rounded-sm  hover:bg-red-400 hover:text-slate-900 w-full duration-700 '
 								type='reset'
 							>
 								login
