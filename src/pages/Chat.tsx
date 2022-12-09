@@ -67,7 +67,7 @@ const Chat = () => {
 			>
 				<ChatHeader contact={contact} />
 				<div
-					className='text-blue-400 h-full max-w-full overflow-y-auto p-4 flex flex-col bg-slate-600 bg-opacity-80'
+					className='text-blue-500 h-full max-w-full overflow-y-auto p-4 flex flex-col bg-slate-600 bg-opacity-80'
 					ref={messagesDiv}
 				>
 					{/* chat */}
@@ -88,13 +88,13 @@ const Chat = () => {
 						<>
 							{isLoading ? (
 								<div className='w-full h-full flex flex-col justify-center items-center'>
-									<h3 className='text-blue-600 text-8xl font-extrabold text-center'>
+									<h3 className='text-white text-8xl font-extrabold text-center'>
 										<BiLoaderCircle className='animate-spin' />
 									</h3>
 								</div>
 							) : (
 								<div className='w-full h-full flex flex-col justify-center items-center'>
-									<h3 className='text-blue-600 text-3xl font-extrabold text-center'>
+									<h3 className='text-white text-3xl font-extrabold text-center'>
 										{loadingContact ? (
 											<>
 												<BiLoaderCircle className='animate-spin text-8xl' />

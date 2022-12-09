@@ -32,7 +32,9 @@ export const getContact = createAsyncThunk(
 const contactsSlice = createSlice({
 	name: 'contact',
 	initialState,
-	reducers: {},
+	reducers: {
+		reset: (state) => initialState,
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(getContact.pending, (state) => {
@@ -58,3 +60,4 @@ const contactsSlice = createSlice({
 });
 
 export default contactsSlice.reducer;
+export const { reset } = contactsSlice.actions;
