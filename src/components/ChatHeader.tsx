@@ -1,14 +1,15 @@
 import React from 'react';
 import { BiArrowBack, BiUser } from 'react-icons/bi';
 import { FiLogOut } from 'react-icons/fi';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logout } from '../app/auth/auth-slice';
-import { AppDispatch } from '../app/store';
+import { AppDispatch, RootState } from '../app/store';
 import { iContact } from '../types/contact';
 
 const ChatHeader = ({ contact }: { contact: iContact | null }) => {
 	const dispatch = useDispatch<AppDispatch>();
+	const { user } = useSelector((state: RootState) => state.auth);
 	const navigate = useNavigate();
 	const handleLogout = () => {
 		dispatch(logout());
@@ -43,7 +44,15 @@ const ChatHeader = ({ contact }: { contact: iContact | null }) => {
 							</span>
 						</div>
 					</>
-				) : null}
+				) : (
+					<div>
+						{user ? (
+							<h3>
+								<span>{user.name}</span> <span>{user.lastname}</span>
+							</h3>
+						) : null}
+					</div>
+				)}
 			</div>
 			<button
 				className=' hover:bg-red-400 w-12 sm:w-10 h-12 sm:h-10 flex justify-center items-center rounded-xl text-red-500 hover:text-white duration-1000 cursor-pointer mr-2'
